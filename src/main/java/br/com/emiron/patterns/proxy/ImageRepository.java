@@ -1,26 +1,19 @@
-package br.com.emiron.patterns.proxy;
+package br.com.emiron.proxy;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ImageRepository{
 
-     Map<String, Thumbnail> thumbnails;
+     public static Map<String, ThumbNail> getThumbnails(){
+          Map<String, ThumbNail> thumbnails = new HashMap<>();
+          ThumbNail thumbnail = new ThumbNail("teste");
+          ThumbNail thumbnail2 = new ThumbNail("teste2");
+          ThumbNail thumbnail3 = new ThumbNail("teste3");
 
-     public ImageRepository(){
-          this.thumbnails = new HashMap<String, Thumbnail>();
-          Thumbnail thumbnail = new Thumbnail("teste");
-          Thumbnail thumbnail2 = new Thumbnail("teste2");
-          Thumbnail thumbnail3 = new Thumbnail("teste3");
-
-          this.thumbnails.put(thumbnail.getTitle(), thumbnail);
-          this.thumbnails.put(thumbnail2.getTitle(), thumbnail2);
-          this.thumbnails.put(thumbnail3.getTitle(), thumbnail3);
+          thumbnails.put(thumbnail.getTitle(), thumbnail);
+          thumbnails.put(thumbnail2.getTitle(), thumbnail2);
+          thumbnails.put(thumbnail3.getTitle(), thumbnail3);
+          return thumbnails;
      }
-
-     public Thumbnail findThumbnailByTitle(String title){
-
-          return this.thumbnails.get(title);
-     }
-
 }

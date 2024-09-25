@@ -1,12 +1,19 @@
-package br.com.emiron.patterns.proxy;
+package br.com.emiron.proxy;
 
-public class ImageFinder implements IImageFinder{
-     private IImageFinder imageFinder = new ImageFinderProxy();
+import java.util.Map;
 
-     public Thumbnail findThumbnailByTitle(String title){
-          System.out.println(
-                    "Image Finder - This method do not call the repository directly, the proxy will surregate it's call");
-          return this.imageFinder.findThumbnailByTitle(title);
+public class ImageFinder implements ThumbNailProvider {
+
+     @Override
+     public Map<String, ThumbNail> listThumbNail() {
+          return ImageRepository.getThumbnails();
      }
 
+     @Override
+     public ThumbNail getThumbNail(String key) {
+          ThumbNail thumbNail = ImageRepository.getThumbnails().get(key);
+
+          System.out.println(thumbNail);
+          return thumbNail;
+     }
 }

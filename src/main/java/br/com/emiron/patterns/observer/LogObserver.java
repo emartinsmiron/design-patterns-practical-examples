@@ -1,11 +1,11 @@
 package br.com.emiron.observer;
 
-public class LogObserver implements IObserver {
+public class LogObserver implements Observable {
 
 	@Override
-	public void print() {
+	public void execute() {
 		System.out.println("Log");
-		
+
 	}
 
 }

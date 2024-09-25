@@ -1,11 +1,11 @@
 package br.com.emiron.observer;
 
-public class HistoryObserver implements IObserver {
+public class HistoryObserver implements Observable {
 
 	@Override
-	public void print() {
+	public void execute() {
 		System.out.println("History");
-		
+
 	}
 
 }

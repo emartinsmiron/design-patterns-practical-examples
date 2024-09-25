@@ -4,19 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventTrigger {
-	List<IObserver> observers = new ArrayList<>();
-	
-	public void addObserver(IObserver observable) {
+	List<Observable> observers = new ArrayList<>();
+
+	public void addObserver(Observable observable) {
 		observers.add(observable);
 	}
-	
-	public void removeObserver(IObserver observable) {
+
+	public void removeObserver(Observable observable) {
 		observers.remove(observable);
 	}
-	
+
 	public void sentNotification() {
-		observers.forEach(observer -> observer.print());
+		observers.forEach(Observable::execute);
 	}
-	
 
 }
