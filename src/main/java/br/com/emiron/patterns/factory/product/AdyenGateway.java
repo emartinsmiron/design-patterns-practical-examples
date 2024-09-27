@@ -1,6 +1,6 @@
-package br.com.emiron.factory;
+package br.com.emiron.factory.product;
 
-public class AdyenGateway implements PaymentGateway{
+public class AdyenGateway implements PaymentGateway {
     @Override
     public String processPayment(double amount) {
         return "Adyen: "+amount;

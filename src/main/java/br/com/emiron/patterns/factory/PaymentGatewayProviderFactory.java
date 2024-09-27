@@ -1,22 +1,27 @@
 package br.com.emiron.factory;
 
+import br.com.emiron.factory.creators.AdyenPaymentGatewayFactory;
+import br.com.emiron.factory.creators.PagarmePaymentGatewayFactory;
+import br.com.emiron.factory.creators.PaymentGatewayFactory;
+import br.com.emiron.factory.creators.VindiPaymentGatewayFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class PaymentGatewayProviderFactory {
-    private final Map<String, PaymentGateway> paymentGateways = new HashMap<>();
+    private final Map<GatewayProvider, PaymentGatewayFactory> paymentGateways = new HashMap<>();
 
     public PaymentGatewayProviderFactory() {
-        paymentGateways.put("pagarmeGateway", new PagarmeGateway());
-        paymentGateways.put("vindiGateway", new VindiGateway());
-        paymentGateways.put("adyenGateway", new AdyenGateway());
+        paymentGateways.put(GatewayProvider.PAGARME, new PagarmePaymentGatewayFactory());
+        paymentGateways.put(GatewayProvider.VINDI, new VindiPaymentGatewayFactory());
+        paymentGateways.put(GatewayProvider.ADYEN, new AdyenPaymentGatewayFactory());
     }
 
-    public PaymentGateway getPaymentGateway(String gatewayType) {
-        var paymentGateway = paymentGateways.get(gatewayType);
-        if (paymentGateway == null){
-                throw new IllegalArgumentException("Unknown Payment Gateway" + gatewayType);
+    public PaymentGatewayFactory getPaymentGateway(GatewayProvider gatewayProvider) {
+        var paymentGatewayFactory = paymentGateways.get(gatewayProvider);
+        if (paymentGatewayFactory == null){
+                throw new IllegalArgumentException("Unknown Payment Gateway" + gatewayProvider);
         }
-        return paymentGateway;
+        return paymentGatewayFactory;
     }
 }

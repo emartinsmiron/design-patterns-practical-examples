@@ -1,4 +1,6 @@
-package br.com.emiron.factory;
+package br.com.emiron.factory.creators;
+
+import br.com.emiron.factory.product.PaymentGateway;
 
 public abstract class PaymentGatewayFactory {
 

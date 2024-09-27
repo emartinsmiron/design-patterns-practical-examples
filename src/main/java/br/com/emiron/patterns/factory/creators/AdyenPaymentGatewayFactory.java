@@ -1,4 +1,11 @@
 package br.com.emiron.factory.creators;
 
-public class AdyenPaymentGatewayFactory {
+import br.com.emiron.factory.product.AdyenGateway;
+import br.com.emiron.factory.product.PaymentGateway;
+
+public class AdyenPaymentGatewayFactory extends PaymentGatewayFactory{
+    @Override
+    public PaymentGateway createPaymentGateway() {
+        return new AdyenGateway();
+    }
 }
